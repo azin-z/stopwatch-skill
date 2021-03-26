@@ -7,7 +7,9 @@ class Stopwatch(MycroftSkill):
 
     @intent_file_handler('stopwatch.intent')
     def handle_stopwatch(self, message):
-        print(message)
+        self.log.info(message)
+        self.log.info("got a hang of logging")
+
         self.speak_dialog('stopwatch')
 
 
