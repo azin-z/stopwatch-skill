@@ -12,6 +12,9 @@ class Stopwatch(MycroftSkill):
 
         self.speak_dialog('stopwatch')
 
+     @intent_file_handler('stopstopwatch.intent')
+    def handle_stopwatch_stop(self, message):
+        self.log.info("stopping stopwatch")
 
 def create_skill():
     return Stopwatch()
