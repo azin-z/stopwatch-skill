@@ -21,7 +21,7 @@ class Stopwatch(MycroftSkill):
         self.log.info("stopping stopwatch")
         duration = time.time() - self.starttime
         self.log.info(duration)
-        self.speak("stopwatch duration is {}".format(round(duration))
+        self.speak("stopwatch duration is {}".format(round(duration)))
 
 def create_skill():
     return Stopwatch()
