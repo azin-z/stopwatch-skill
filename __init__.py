@@ -8,7 +8,6 @@ class Stopwatch(MycroftSkill):
         MycroftSkill.__init__(self)
     
     def printStopwatchUpdate(self, currentTime):
-        self.log.info(duration)
         self.speak('stopwatch has been running for {} seconds'.format(currentTime-self.starttime))
 
     @intent_file_handler('stopwatch.intent')
