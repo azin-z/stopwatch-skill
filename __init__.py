@@ -8,6 +8,7 @@ class Stopwatch(MycroftSkill):
         MycroftSkill.__init__(self)
     
     def printStopwatchUpdate(self, currentTime):
+        self.log.info(duration)
         self.speak('stopwatch has been running for {} seconds'.format(currentTime-self.starttime))
 
     @intent_file_handler('stopwatch.intent')
@@ -18,10 +19,13 @@ class Stopwatch(MycroftSkill):
 
     @intent_file_handler('stopstopwatch.intent')
     def handle_stopwatch_stop(self, message):
+        if self.starttime is None:
+            self.speak("No stopwatch running, please start one first")
         self.log.info("stopping stopwatch")
-        duration = time.time() - self.starttime
-        self.log.info(duration)
-        self.speak("stopwatch duration is {}".format(round(duration)))
+        self.printStopwatchUpdate(time.time())
+        # duration = time.time() - self.starttime
+        # self.log.info(duration)
+        # self.speak("stopwatch duration is {} seconds".format(round(duration)))
 
 def create_skill():
     return Stopwatch()
