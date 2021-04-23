@@ -18,7 +18,7 @@ class Stopwatch(MycroftSkill):
     def handle_stopwatch(self, message):
         self.starttime = time.time()
         self.speak_dialog('stopwatch')
-        Thread(target=printStopwatchUpdate).start()
+        Thread(target=self.printStopwatchUpdate).start()
 
     @intent_file_handler('stopstopwatch.intent')
     def handle_stopwatch_stop(self, message):
