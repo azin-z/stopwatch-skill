@@ -20,6 +20,7 @@ class Stopwatch(MycroftSkill):
     def handle_stopwatch_stop(self, message):
         if self.starttime is None:
             self.speak("No stopwatch running, please start one first")
+            return
         self.log.info("stopping stopwatch")
         self.printStopwatchUpdate(time.time())
         # duration = time.time() - self.starttime
