@@ -2,11 +2,11 @@
 Starts a stopwatch to measure time
 
 ## About
-Starts a stopwatch and can be asked how much time has passed.
+Starts a stopwatch. When you stop the stopwatch it tells you how much time has passed. You can also ask it for how much time has passed. 
 
 ## Examples
 * "Start a stopwatch"
-* "Start a timer"
+* "Start stopwatch"
 
 ## Credits
 Azin
