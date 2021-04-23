@@ -10,7 +10,7 @@ class Stopwatch(MycroftSkill):
     def printStopwatchUpdate(self, currentTime):
         if self.starttime is not None:
             self.speak('stopwatch has been running for {} seconds'.format(currentTime-self.starttime))
-            `Timer(5.0, self.printStopwatchUpdate, (time.time()))`.start()
+            Timer(5.0, self.printStopwatchUpdate, (time.time())).start()
 
 
     @intent_file_handler('stopwatch.intent')
