@@ -1,23 +1,24 @@
 from mycroft import MycroftSkill, intent_file_handler
 import time
-from threading import Timer
+from time import sleep
+from threading import Thread
 
 class Stopwatch(MycroftSkill):
     def __init__(self):
         self.starttime = None 
         MycroftSkill.__init__(self)
     
-    def printStopwatchUpdate(self, currentTime):
-        if self.starttime is not None:
-            self.speak('stopwatch has been running for {} seconds'.format(currentTime-self.starttime))
-            Timer(5.0, self.printStopwatchUpdate, (time.time())).start()
+    def printStopwatchUpdate(self):
+        while self.starttime is not None:
+            self.speak('stopwatch has been running for {} seconds'.format(time.time()-self.starttime))
+            sleep(5)
 
 
     @intent_file_handler('stopwatch.intent')
     def handle_stopwatch(self, message):
         self.starttime = time.time()
         self.speak_dialog('stopwatch')
-        self.printStopwatchUpdate(time.time())
+        Thread(target=printStopwatchUpdate).start()
 
     @intent_file_handler('stopstopwatch.intent')
     def handle_stopwatch_stop(self, message):
