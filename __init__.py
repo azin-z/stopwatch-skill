@@ -28,7 +28,7 @@ class Stopwatch(MycroftSkill):
         hour = "{hours} hour" if d["hours"]>0 else "" 
         minutes = "{minutes} minute" if d["minutes"]>0 else ""
         seconds = "{seconds} second" if d["seconds"]>0 else ""
-        if day+hour+minutes != "" and d["seconds"]>0::
+        if day+hour+minutes != "" and d["seconds"]>0:
             seconds = "and " + seconds
         fmt = fix_plural(day, d["days"]) + fix_plural(hour, d["hours"]) + fix_plural(minutes, d["minutes"]) + fix_plural(seconds, d["seconds"])
         return fmt.format(**d)
