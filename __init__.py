@@ -60,7 +60,7 @@ class Stopwatch(MycroftSkill):
     def handle_stopwatch_stop(self, message):
         if self.no_stopwatch_running_handler():
             return
-        self.speak_dialog('stopwatch_stop', {'time': self.get_elaspsed_time_string()))
+        self.speak_dialog('stopwatch_stop', {'time': self.get_elaspsed_time_string())
         self.starttime = None
 
 def create_skill():
