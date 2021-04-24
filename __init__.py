@@ -9,9 +9,6 @@ def fix_plural(string, value):
         return string + "s "
     return string + " "
 
-
-
-
 class Stopwatch(MycroftSkill):
     def __init__(self):
         self.starttime = None 
