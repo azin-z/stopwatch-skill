@@ -41,8 +41,8 @@ class Stopwatch(MycroftSkill):
     def no_stopwatch_running_handler(self):
         if self.starttime is None:
             self.speak("No stopwatch running, please start one first")
-            return False
-        return True
+            return True
+        return False
 
     @intent_file_handler('stopwatch.intent')
     def handle_stopwatch(self, message):
