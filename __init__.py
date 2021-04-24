@@ -55,7 +55,6 @@ class Stopwatch(MycroftSkill):
         if self.no_stopwatch_running_handler():
             return
         self.speak_dialog('stopwatch_update', {'time': self.get_elaspsed_time_string()})
-        self.starttime = None
 
     @intent_file_handler('stopstopwatch.intent')
     def handle_stopwatch_stop(self, message):
