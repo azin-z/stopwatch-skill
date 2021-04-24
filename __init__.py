@@ -28,7 +28,7 @@ class Stopwatch(MycroftSkill):
         hour = "{hours} hour" if d["hours"]>0 else "" 
         minutes = "{minutes} minute" if d["minutes"]>0 else ""
         seconds = "{seconds} second" if d["seconds"]>0 else ""
-        if day+hour+minutes != "":
+        if day+hour+minutes != "" and d["seconds"]>0::
             seconds = "and " + seconds
         fmt = fix_plural(day, d["days"]) + fix_plural(hour, d["hours"]) + fix_plural(minutes, d["minutes"]) + fix_plural(seconds, d["seconds"])
         return fmt.format(**d)
@@ -36,7 +36,7 @@ class Stopwatch(MycroftSkill):
     def printStopwatchUpdate(self):
         while self.starttime is not None:
             sleep(60)
-            self.speak('stopwatch has been running for ' + self.get_elaspsed_time_string())
+        self.speak_dialog('stopwatch_update', {'time': self.get_elaspsed_time_string()})
 
     def no_stopwatch_running_handler(self):
         if self.starttime is None:
@@ -54,7 +54,8 @@ class Stopwatch(MycroftSkill):
     def handle_stopwatch_update_request(self, message):
         if self.no_stopwatch_running_handler():
             return
-        self.speak('Stopwatch has recorded '+ self.get_elaspsed_time_string())
+        self.speak_dialog('stopwatch_update', {'time': self.get_elaspsed_time_string()})
+        self.starttime = None
 
     @intent_file_handler('stopstopwatch.intent')
     def handle_stopwatch_stop(self, message):
